@@ -1,7 +1,41 @@
-import TrackOrder from "./TrackOrder";
-
+// import TrackOrder from "./TrackOrder";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const OrderDetails = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
+    const orderData = location.state;
+
+
+    if (!orderData) {
+        return (
+            <div className="text-center mt-10">
+                <p className="text-lg font-semibold mb-4">No order data found.</p>
+                <button
+                    onClick={() => navigate("/")}
+                    className="border px-4 py-2 rounded-md bg-[#D2C5A2] font-semibold"
+                >
+                    Go to Home
+                </button>
+            </div>
+        );
+    }
+
+    const {
+        fullName,
+        email,
+        phoneNo,
+        
+        nid,
+        dob,
+        gender,
+        bloodGroup,
+        
+        cart,
+        totalPrice,
+     
+    } = orderData;
+    const orderId = `ORD-${Date.now().toString().slice(-8)}`;
 
 
     return (
@@ -14,7 +48,7 @@ const OrderDetails = () => {
                             <p className="p-3 rounded-md lg:my-2 my-1 w-fit border bg-[#D2C5A2] font-bold text-lg">
                                 Order Id :
                                 <span className="font-semibold">
-                                  order id
+                                  {orderId}
                                 </span>
                             </p>
                         </div>
@@ -25,33 +59,37 @@ const OrderDetails = () => {
                                     <div className="flex items-center justify-between">
                                         <p>Full Name :</p>
                                         <p className="text-start">
-                                            name
+                                           {fullName || "N/A"}
                                         </p>
                                     </div>
                                     <div className="flex items-center justify-between">
-                                        <p>Country :</p>
-                                        <p>country</p>
+                                        <p>Email :</p>
+                                        <p>{email || "N/A"}</p>
                                     </div>
                                     <div className="flex items-center justify-between">
-                                        <p>District Thana :</p>
+                                        <p>Phone No :</p>
                                         <p className="text-start">
-                                            Thana
+                                            {phoneNo || "N/A"}
                                         </p>
                                     </div>
                                     <div className="flex items-center justify-between">
-                                        <p>Address :</p>
-                                        <p>Address</p>
+                                        <p>Gender :</p>
+                                        <p>{gender || "N/A"}</p>
                                     </div>
                                     <div className="flex items-center justify-between">
-                                        <p>Order Notes :</p>
+                                        <p>Date of Birth :</p>
                                         <p className="text-start">
-                                            Order Notes
+                                            {dob || "N/A"}
                                         </p>
                                     </div>
                                     <div className="flex items-center justify-between">
-                                        <p>Mobile :</p>
-                                        <p>Mobile</p>
-                                    </div>
+                                    <p>Blood Group :</p>
+                                    <p>{bloodGroup || "N/A"}</p>
+                                </div>
+                                <div className="flex items-center justify-between">
+                                    <p>NID No :</p>
+                                    <p>{nid || "N/A"}</p>
+                                </div>
                                 </div>
                             </div>
 
@@ -61,32 +99,36 @@ const OrderDetails = () => {
                                 <div className="flex items-center justify-between">
                                     <p>Full Name :</p>
                                     <p className="text-start">
-                                        name
+                                        {fullName || "N/A"}
                                     </p>
                                 </div>
                                 <div className="flex items-center justify-between">
-                                    <p>Country :</p>
-                                    <p>country</p>
+                                    <p>Email :</p>
+                                    <p>{email || 'N/A'}</p>
                                 </div>
                                 <div className="flex items-center justify-between">
-                                    <p>District Thana :</p>
+                                    <p>Phone No:</p>
                                     <p className="text-start">
-                                        Thana
+                                        {phoneNo || 'N/A'}
                                     </p>
                                 </div>
                                 <div className="flex items-center justify-between">
-                                    <p>Address :</p>
-                                    <p>Address</p>
+                                    <p>Gender :</p>
+                                    <p>{gender || "N/A"}</p>
                                 </div>
                                 <div className="flex items-center justify-between">
-                                    <p>Order Notes :</p>
-                                    <p className="text-start">
-                                        Order Notes
-                                    </p>
+                                        <p>Date of Birth :</p>
+                                        <p className="text-start">
+                                            {dob || "N/A"}
+                                        </p>
+                                    </div>
+                                    <div className="flex items-center justify-between">
+                                    <p>Blood Group :</p>
+                                    <p>{bloodGroup || "N/A"}</p>
                                 </div>
                                 <div className="flex items-center justify-between">
-                                    <p>Mobile :</p>
-                                    <p>Mobile</p>
+                                    <p>NID No :</p>
+                                    <p>{nid || "N/A"}</p>
                                 </div>
                             </div>
                             </div>
@@ -119,33 +161,38 @@ const OrderDetails = () => {
                                 </thead>
                                 <tbody className="md:text-base text-sm font-semibold">
                                   
-                                        <tr >
-                                            <td className="border text-center w-10 h-12 px-2">
-                                                <img
-                                                    className=" w-full h-full object-cover mx-auto"
-                                                    src=''
-                                                    alt=''
-                                                />
-                                            </td>
-                                            <td className="lg:py-6 md:py-4 py-2 text-center border">
-                                               Course name
-                                            </td>
-                                            <td className="lg:py-6 md:py-4 py-2 text-center border">
-                                               Student name
-                                            </td>
-                                            <td className="lg:py-6 md:py-4 py-2 text-center border">
-                                               quantity
-                                            </td>
-                                            <td className="lg:py-6 md:py-4 py-2 text-center border">
-                                                price
-                                            </td>
-                                            <td className="lg:py-6 md:py-4 py-2 text-center border">
-                                               total price
-                                            </td>
-                                        </tr>
+                                        {cart.map((course) => (
+                                    <tr key={course.id}>
+                                        <td className="border text-center w-10 h-12 px-2">
+                                            <img
+                                                className="w-full h-full object-cover mx-auto"
+                                                src={course.photo}
+                                                alt={course.course_name}
+                                            />
+                                        </td>
+                                        <td className="lg:py-6 md:py-4 py-2 text-center border">
+                                            {course.course_name}
+                                        </td>
+                                        <td className="lg:py-6 md:py-4 py-2 text-center border">
+                                            {fullName || "N/A"}
+                                        </td>
+                                        <td className="lg:py-6 md:py-4 py-2 text-center border">
+                                            {course.quantity}
+                                        </td>
+                                        <td className="lg:py-6 md:py-4 py-2 text-center border">
+                                            {course.discount_price} TK
+                                        </td>
+                                        <td className="lg:py-6 md:py-4 py-2 text-center border">
+                                            {Number(course.discount_price) * course.quantity} TK
+                                        </td>
+                                    </tr>
+                                ))}
                                     
                                 </tbody>
                             </table>
+                            <div className="text-right font-bold text-lg mt-3">
+                            Grand Total: {totalPrice} TK
+                        </div>
                         </div>
                     </div>
                    
