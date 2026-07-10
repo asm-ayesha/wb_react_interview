@@ -20,7 +20,10 @@ const OrderProvider = ({children}) => {
             return;
         }
 
-        setCart([...cart, course]);
+        setCart([...cart,{ 
+            ...course,
+            quantity: 1,
+        },]);
         toast.success(`${course.course_name} Added to cart!`, "success");
     };
 
