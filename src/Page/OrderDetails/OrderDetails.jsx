@@ -12,7 +12,7 @@ const OrderDetails = () => {
             <div className="text-center mt-10">
                 <p className="text-lg font-semibold mb-4">No order data found.</p>
                 <button
-                    onClick={() => navigate("/")}
+                    onClick={() => navigate("/course")}
                     className="border px-4 py-2 rounded-md bg-[#D2C5A2] font-semibold"
                 >
                     Go to Home
