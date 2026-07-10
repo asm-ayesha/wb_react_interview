@@ -1,10 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { OrderContext } from "../../ContextAPIs/OrderProvider";
 
-// const coursePromise = fetch('https://itder.com/api/get-course-list').then((res)=> res.json())
+
 
 
 const Courses = () => {
     const [courses, setCourses] = useState([]);
+    const {addCart} = useContext(OrderContext)
+    
+
 
     useEffect(() => {
         fetch("https://itder.com/api/get-course-list")
@@ -68,7 +72,9 @@ const Courses = () => {
                                 {/* <span className="text-green-600 text-sm">Earn Tk 48</span> */}
                             </div>
                             <div className="mt-4 flex gap-2">
-                                <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-500 w-full font-bold text-md">Add To Cart</button>
+                                <button 
+                                onClick={() => addCart(course)}
+                                className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-500 w-full font-bold text-md">Add To Cart</button>
 
                             </div>
                         </div>
