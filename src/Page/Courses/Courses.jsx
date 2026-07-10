@@ -41,7 +41,7 @@ const Courses = () => {
                             <div className="pb-2">
                                 <img
                                     src={course.photo}
-                                    alt="Course banner"
+                                    alt={course.course_name}
                                 ></img>
                             </div>
                             <h2 className="text-gray-800 text-lg font-semibold mb-2">{course.course_name}</h2>
