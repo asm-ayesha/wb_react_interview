@@ -161,7 +161,7 @@ const OrderDetails = () => {
                                 </thead>
                                 <tbody className="md:text-base text-sm font-semibold">
                                   
-                                        {cart.map((course) => (
+                                        {cart.map(course => (
                                     <tr key={course.id}>
                                         <td className="border text-center w-10 h-12 px-2">
                                             <img
